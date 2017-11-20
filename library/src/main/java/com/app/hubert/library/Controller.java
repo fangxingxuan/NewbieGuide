@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -15,7 +14,6 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -65,19 +63,23 @@ public class Controller {
     public int show() {
         if (!alwaysShow) {
             boolean showed = sp.getBoolean(label, false);
-            if (showed) return NewbieGuide.FAILED;
+            if (showed)
+                return NewbieGuide.FAILED;
         }
         //fix oppo等部分手机无法关闭硬件加速问题
-        activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
-                WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
+        activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED, WindowManager
+                .LayoutParams.FLAG_HARDWARE_ACCELERATED);
 
         if (guidePages != null && guidePages.size() > 0) {
             current = 0;
             GuidePage page = guidePages.get(0);
             updatePage(page);
-            mParentView.addView(guideLayout, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-            if (onGuideChangedListener != null) onGuideChangedListener.onShowed(this);
-            if (onPageChangedListener != null) onPageChangedListener.onPageChanged(current);
+            mParentView.addView(guideLayout, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT));
+            if (onGuideChangedListener != null)
+                onGuideChangedListener.onShowed(this);
+            if (onPageChangedListener != null)
+                onPageChangedListener.onPageChanged(current);
             sp.edit().putBoolean(label, true).apply();
             guideLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -97,7 +99,8 @@ public class Controller {
     private void nextOrRemove() {
         if (current < guidePages.size() - 1) {
             updatePage(guidePages.get(++current));
-            if (onPageChangedListener != null) onPageChangedListener.onPageChanged(current);
+            if (onPageChangedListener != null)
+                onPageChangedListener.onPageChanged(current);
         } else {
             remove();
         }
@@ -145,7 +148,8 @@ public class Controller {
         guideLayout.removeAllViews();
         if (page.getLayoutResId() != 0) {
             View view = LayoutInflater.from(activity).inflate(page.getLayoutResId(), guideLayout, false);
-            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT);
             if (!page.isFullScreen()) {
                 params.topMargin = ScreenUtils.getStatusBarHeight(activity);
             }
@@ -162,7 +166,8 @@ public class Controller {
                             }
                         });
                     } else {
-                        Log.e("NewbieGuide", "can't find the view by id : " + viewId + " which used to remove guide layout");
+                        Log.e("NewbieGuide", "can't find the view by id : " + viewId + " which used to remove guide " +
+                                "layout");
                     }
                 }
             }
@@ -187,7 +192,8 @@ public class Controller {
     public void remove() {
         if (guideLayout != null && guideLayout.getParent() != null) {
             ((ViewGroup) guideLayout.getParent()).removeView(guideLayout);
-            if (onGuideChangedListener != null) onGuideChangedListener.onRemoved(this);
+            if (onGuideChangedListener != null)
+                onGuideChangedListener.onRemoved(this);
         }
         removeListenerFragment();
     }

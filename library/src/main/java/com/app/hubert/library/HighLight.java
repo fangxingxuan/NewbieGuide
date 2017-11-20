@@ -1,6 +1,8 @@
 package com.app.hubert.library;
 
+import android.graphics.Paint;
 import android.graphics.RectF;
+import android.text.TextPaint;
 import android.view.View;
 
 /**
@@ -13,6 +15,11 @@ public class HighLight {
     private View mHole;
     private Type mType;
     private int round;
+    private Paint paint;//自定义画笔;
+    private TextPaint textPaint;//自定义文字画笔;
+    private String desc;//高亮的引导描述
+    private int descPadding;//描述文字距离高亮区域的padding
+    private boolean textAlignWithHighlight = false;//desc文字是否两端对齐高亮区域，false:对齐画布，true:对齐高亮
 
     public HighLight(View hole, Type type) {
         this.mHole = hole;
@@ -48,11 +55,50 @@ public class HighLight {
         return mType;
     }
 
+    public Paint getPaint() {
+        return paint;
+    }
+
+    public void setPaint(Paint paint) {
+        this.paint = paint;
+    }
+
+    public TextPaint getTextPaint() {
+        return textPaint;
+    }
+
+    public void setTextPaint(TextPaint textPaint) {
+        this.textPaint = textPaint;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public int getDescPadding() {
+        return descPadding;
+    }
+
+    public void setDescPadding(int descPadding) {
+        this.descPadding = descPadding;
+    }
+
+    public boolean isTextAlignWithHighlight() {
+        return textAlignWithHighlight;
+    }
+
+    public void setTextAlignWithHighlight(boolean textAlignWithHighlight) {
+        this.textAlignWithHighlight = textAlignWithHighlight;
+    }
+
     public static enum Type {
         CIRCLE,//圆形
         RECTANGLE, //矩形
         OVAL,//椭圆
         ROUND_RECTANGLE;//圆角矩形
     }
-
 }

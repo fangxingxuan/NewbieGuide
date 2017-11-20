@@ -1,5 +1,7 @@
 package com.app.hubert.library;
 
+import android.graphics.Paint;
+import android.text.TextPaint;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -26,11 +28,22 @@ public class GuidePage {
      * @param view  需要高亮的view
      * @param type  高亮类型：圆形，椭圆，矩形，圆角矩形
      * @param round 圆角尺寸，单位dp
-     * @return builder
+     * @param desc  高亮对应的描述文字
+     * @param paint 自定义高亮画笔
      */
-    public void addHighLight(View view, HighLight.Type type, int round) {
+    public void addHighLight(View view, HighLight.Type type, int round, String desc, int descPadding, Paint paint,
+                             TextPaint textPaint) {
         HighLight highLight = new HighLight(view, type);
-        if (round > 0) highLight.setRound(round);
+        if (round > 0)
+            highLight.setRound(round);
+        highLight.setDesc(desc);
+        highLight.setPaint(paint);
+        highLight.setDescPadding(descPadding);
+        highLight.setTextPaint(textPaint);
+        highLights.add(highLight);
+    }
+
+    public void addHighLight(HighLight highLight) {
         highLights.add(highLight);
     }
 
@@ -82,4 +95,5 @@ public class GuidePage {
     public boolean isEmpty() {
         return layoutResId == 0 && backgroundColor == 0;
     }
+
 }

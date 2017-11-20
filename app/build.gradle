@@ -5,7 +5,7 @@ android {
     buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "com.app.hubert.newbieguide"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -28,7 +28,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:recyclerview-v7:26.1.0'
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.28'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
     compile 'com.jaeger.statusbarutil:library:1.4.0'
     testCompile 'junit:junit:4.12'
 }

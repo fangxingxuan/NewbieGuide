@@ -2,6 +2,8 @@ package com.app.hubert.library;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.graphics.Paint;
+import android.text.TextPaint;
 import android.text.TextUtils;
 import android.view.View;
 
@@ -35,34 +37,38 @@ public class Builder {
         this.activity = v4Fragment.getActivity();
     }
 
-    /**
-     * 添加需要高亮的view,默认高亮类型为矩形
-     */
+    public Builder addHighLight(HighLight highLight) {
+        currentPage.addHighLight(highLight);
+        return this;
+    }
+
     public Builder addHighLight(View view) {
         return addHighLight(view, HighLight.Type.RECTANGLE, 0);
     }
 
-    /**
-     * 添加需要高亮的view
-     *
-     * @param view 需要高亮的view
-     * @param type 高亮类型：圆形，椭圆，矩形，圆角矩形
-     * @return builder
-     */
     public Builder addHighLight(View view, HighLight.Type type) {
         return addHighLight(view, type, 0);
     }
 
-    /**
-     * 添加需要高亮的view
-     *
-     * @param view  需要高亮的view
-     * @param type  高亮类型：圆形，椭圆，矩形，圆角矩形
-     * @param round 圆角尺寸，单位dp
-     * @return builder
-     */
     public Builder addHighLight(View view, HighLight.Type type, int round) {
-        currentPage.addHighLight(view, type, round);
+        return addHighLight(view, type, round, null, 0, null);
+    }
+
+    public Builder addHighLight(View view, HighLight.Type type, int round, String desc) {
+        return addHighLight(view, type, round, desc, 0, null);
+    }
+
+    public Builder addHighLight(View view, HighLight.Type type, int round, String desc, int descPadding) {
+        return addHighLight(view, type, round, desc, descPadding, null);
+    }
+
+    public Builder addHighLight(View view, HighLight.Type type, int round, String desc, int descPadding, Paint paint) {
+        return addHighLight(view, type, round, desc, descPadding, paint, null);
+    }
+
+    public Builder addHighLight(View view, HighLight.Type type, int round, String desc, int descPadding, Paint paint,
+                                TextPaint textPaint) {
+        currentPage.addHighLight(view, type, round, desc, descPadding, paint, textPaint);
         return this;
     }
 
