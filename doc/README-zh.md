@@ -1,4 +1,4 @@
-[![](https://jitpack.io/v/huburt-Hu/NewbieGuide.svg)](https://jitpack.io/#huburt-Hu/NewbieGuide)
+[![](https://jitpack.io/v/fangxingxuan/NewbieGuide.svg)](https://jitpack.io/#fangxingxuan/NewbieGuide)
 
 
 # NewbieGuide
@@ -29,12 +29,12 @@ Android 快速实现新手引导层的库
 
 改变高亮view的尺寸，并不用调整显示引导层的代码
 
-![sample](https://github.com/huburt-Hu/NewbieGuide/raw/master/screenshoot/device-2017-08-09-161703.png)  
-![sample](https://github.com/huburt-Hu/NewbieGuide/raw/master/screenshoot/change_size.png)
+![sample](https://github.com/fangxingxuan/NewbieGuide/raw/master/screenshoot/device-2017-08-09-161703.png)  
+![sample](https://github.com/fangxingxuan/NewbieGuide/raw/master/screenshoot/change_size.png)
 
 引导层的xml可以完全自定义，像怎样显示就怎样显示
 
-![sample](https://github.com/huburt-Hu/NewbieGuide/raw/master/screenshoot/device-2017-11-03-151550.png)
+![sample](https://github.com/fangxingxuan/NewbieGuide/raw/master/screenshoot/device-2017-11-03-151550.png)
 
 
 ## 此库依赖
@@ -61,7 +61,7 @@ module的build.gradle添加
 
  `
  dependencies {
-	  compile 'com.github.huburt-Hu:NewbieGuide:v1.2.0'
+	  compile 'com.github.fangxingxuan:NewbieGuide:v1.2.0'
 	}
  `
 
@@ -69,7 +69,7 @@ module的build.gradle添加
 
  `
  dependencies {
-	  compile ('com.github.huburt-Hu:NewbieGuide:v1.2.0') {
+	  compile ('com.github.fangxingxuan:NewbieGuide:v1.2.0') {
             exclude group: 'com.android.support'
       }
  }
