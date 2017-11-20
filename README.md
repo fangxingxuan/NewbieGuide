@@ -1,4 +1,4 @@
-[![](https://jitpack.io/v/huburt-Hu/NewbieGuide.svg)](https://jitpack.io/#huburt-Hu/NewbieGuide)
+[![](https://jitpack.io/v/fangxingxuan/NewbieGuide.svg)](https://jitpack.io/#fangxingxuan/NewbieGuide)
 
 
 # NewbieGuide
@@ -15,7 +15,7 @@ It is very convenient to adjust the position of the text and image through the c
 
 ## Document
 
-* [中文](https://github.com/huburt-Hu/NewbieGuide/blob/master/doc/README-zh.md)
+* [中文](https://github.com/fangxingxuan/NewbieGuide/blob/master/doc/README-zh.md)
 
 
 ## Change Log
@@ -42,12 +42,12 @@ Add fragment support and monitor fragment's onDestroyView to destroy the NewbieG
 
 Change the size of the highlighted view need't adjusts the code where showing the guide layer
 
-![sample](https://github.com/huburt-Hu/NewbieGuide/raw/master/screenshoot/device-2017-08-09-161703.png)  
-![sample](https://github.com/huburt-Hu/NewbieGuide/raw/master/screenshoot/change_size.png)
+![sample](https://github.com/fangxingxuan/NewbieGuide/raw/master/screenshoot/device-2017-08-09-161703.png)  
+![sample](https://github.com/fangxingxuan/NewbieGuide/raw/master/screenshoot/change_size.png)
 
 The guide layer's XML can be fully customizable, just you like
 
-![sample](https://github.com/huburt-Hu/NewbieGuide/raw/master/screenshoot/device-2017-11-03-151550.png)
+![sample](https://github.com/fangxingxuan/NewbieGuide/raw/master/screenshoot/device-2017-11-03-151550.png)
 
 
 ## Download
@@ -67,7 +67,7 @@ build.gradle of module adds
 
  ```
  dependencies {
-	  compile 'com.github.huburt-Hu:NewbieGuide:v1.2.0'
+	  compile 'com.github.fangxingxuan:NewbieGuide:v1.2.0'
 	}
  ```
 
@@ -75,7 +75,7 @@ If you use appcompat-v7 on your project, you can exclude the library's reference
 
 ```
  dependencies {
-	  compile ('com.github.huburt-Hu:NewbieGuide:v1.2.0') {
+	  compile ('com.github.fangxingxuan:NewbieGuide:v1.2.0') {
             exclude group: 'com.android.support'
       }
  }
