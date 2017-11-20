@@ -67,7 +67,7 @@ build.gradle of module adds
 
  ```
  dependencies {
-	  compile 'com.github.fangxingxuan:NewbieGuide:v1.2.0'
+	  compile 'com.github.fangxingxuan:NewbieGuide:lastRelease'
 	}
  ```
 
@@ -75,7 +75,7 @@ If you use appcompat-v7 on your project, you can exclude the library's reference
 
 ```
  dependencies {
-	  compile ('com.github.fangxingxuan:NewbieGuide:v1.2.0') {
+	  compile ('com.github.fangxingxuan:NewbieGuide:lastRelease') {
             exclude group: 'com.android.support'
       }
  }

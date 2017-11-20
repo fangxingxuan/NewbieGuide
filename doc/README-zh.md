@@ -61,7 +61,7 @@ module的build.gradle添加
 
  `
  dependencies {
-	  compile 'com.github.fangxingxuan:NewbieGuide:v1.2.0'
+	  compile 'com.github.fangxingxuan:NewbieGuide:lastRelease'
 	}
  `
 
@@ -69,7 +69,7 @@ module的build.gradle添加
 
  `
  dependencies {
-	  compile ('com.github.fangxingxuan:NewbieGuide:v1.2.0') {
+	  compile ('com.github.fangxingxuan:NewbieGuide:lastRelease') {
             exclude group: 'com.android.support'
       }
  }
