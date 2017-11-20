@@ -20,6 +20,11 @@ It is very convenient to adjust the position of the text and image through the c
 
 ## Change Log
 
+**v1.2.1**
+
+Add a custom Paint && TextPaint.
+Add a custom description that follows the highlighted area of ​​the target.
+
 **v1.2.0**
 
 Modify the implementation to support more than one guide page display.
