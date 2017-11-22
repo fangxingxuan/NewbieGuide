@@ -55,6 +55,10 @@ public class Controller {
         sp = activity.getSharedPreferences(NewbieGuide.TAG, Activity.MODE_PRIVATE);
     }
 
+    public boolean isShowed() {
+        return sp.getBoolean(label, false);
+    }
+
     /**
      * 显示指引layout
      *
@@ -166,8 +170,8 @@ public class Controller {
                             }
                         });
                     } else {
-                        Log.e("NewbieGuide", "can't find the view by id : " + viewId + " which used to remove guide " +
-                                "layout");
+                        Log.e("NewbieGuide", "can't find the view by id : " + viewId + " which used to remove guide "
+                                + "layout");
                     }
                 }
             }
