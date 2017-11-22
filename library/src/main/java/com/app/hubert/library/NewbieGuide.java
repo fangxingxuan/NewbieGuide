@@ -2,6 +2,8 @@ package com.app.hubert.library;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 /**
  * Created by hubert
@@ -9,6 +11,8 @@ import android.app.Fragment;
  * Created on 2017/7/27.
  */
 public class NewbieGuide {
+
+    private static SharedPreferences sp;
 
     public static final String TAG = "NewbieGuide";
 
@@ -30,6 +34,13 @@ public class NewbieGuide {
      */
     public static Builder with(Activity activity) {
         return new Builder(activity);
+    }
+
+    public static boolean isShowed(Context context, String label) {
+        if (sp == null) {
+            sp = context.getSharedPreferences(NewbieGuide.TAG, Activity.MODE_PRIVATE);
+        }
+        return sp.getBoolean(label, false);
     }
 
     public static Builder with(Fragment fragment) {
