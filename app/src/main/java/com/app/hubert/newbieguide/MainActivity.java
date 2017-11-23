@@ -6,16 +6,12 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextPaint;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.app.hubert.library.Controller;
 import com.app.hubert.library.HighLight;
 import com.app.hubert.library.NewbieGuide;
-import com.app.hubert.library.OnGuideChangedListener;
-import com.app.hubert.library.OnPageChangedListener;
 
 import java.util.Random;
 
@@ -67,28 +63,10 @@ public class MainActivity extends AppCompatActivity {
         paint.setStrokeWidth(3);
         //新增多页模式，即一个引导层显示多页引导内容
         NewbieGuide.with(this).setLabel("page")//设置引导层标示区分不同引导层，必传！否则报错
-                .setOnGuideChangedListener(new OnGuideChangedListener() {
-                    @Override
-                    public void onShowed(Controller controller) {
-                        Log.e(TAG, "NewbieGuide onShowed: ");
-                        //引导层显示
-                    }
-
-                    @Override
-                    public void onRemoved(Controller controller) {
-                        Log.e(TAG, "NewbieGuide  onRemoved: ");
-                        //引导层消失（多页切换不会触发）
-                    }
-                }).setOnPageChangedListener(new OnPageChangedListener() {
-            @Override
-            public void onPageChanged(int page) {
-                Log.e(TAG, "NewbieGuide  onPageChanged: " + page);
-                //引导页切换，page为当前页位置，从0开始
-            }
-        }).alwaysShow(true)//是否每次都显示引导层，默认false，只显示一次
+                .alwaysShow(true)//是否每次都显示引导层，默认false，只显示一次
                 //-------------以上元素为引导层属性--------------*/
 
-                .addHighLight(genHighlight(textView)).setLayoutRes(R.layout.view_guide)//设置引导页布局
+                .addHighLight(genHighlight(textView))
                 .asPage()//保存参数为第一页
                 //------------- 第一页引导页的属性 --------------*/
 

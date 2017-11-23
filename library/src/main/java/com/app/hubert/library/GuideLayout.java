@@ -96,6 +96,7 @@ public class GuideLayout extends RelativeLayout {
                         break;
                 }
                 if (!TextUtils.isEmpty(hl.getDesc())) {
+                    canvas.save();
                     TextPaint textPaint = hl.getTextPaint();
                     if (textPaint == null)
                         textPaint = this.textPaint;
