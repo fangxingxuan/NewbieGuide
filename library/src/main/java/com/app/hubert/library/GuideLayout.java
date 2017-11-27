@@ -1,12 +1,11 @@
 package com.app.hubert.library;
 
 import android.content.Context;
-import android.graphics.BlurMaskFilter;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.text.Layout;
 import android.text.StaticLayout;
@@ -48,12 +47,14 @@ public class GuideLayout extends RelativeLayout {
     private void init() {
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
-        PorterDuffXfermode xfermode = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
-        mPaint.setXfermode(xfermode);
+        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setColor(Color.WHITE);
+        // PorterDuffXfermode xfermode = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+        // mPaint.setXfermode(xfermode);
 
         //设置画笔遮罩滤镜,可以传入BlurMaskFilter或EmbossMaskFilter，前者为模糊遮罩滤镜而后者为浮雕遮罩滤镜
         //这个方法已经被标注为过时的方法了，如果你的应用启用了硬件加速，你是看不到任何阴影效果的
-        mPaint.setMaskFilter(new BlurMaskFilter(10, BlurMaskFilter.Blur.INNER));
+        // mPaint.setMaskFilter(new BlurMaskFilter(10, BlurMaskFilter.Blur.INNER));
         //关闭当前view的硬件加速
         setLayerType(LAYER_TYPE_SOFTWARE, null);
 
@@ -111,6 +112,21 @@ public class GuideLayout extends RelativeLayout {
                             .ALIGN_NORMAL, 1.0f, 0.0f, false);
                     staticLayout.draw(canvas);
                     canvas.restore();
+                }
+
+                //适用于能控制明显指向的图片的未知大小等场景，或者没有指向的图片
+                if (hl.getImageRes() > 0) {
+                    Bitmap bitmap = BitmapFactory.decodeResource(getResources(), hl.getImageRes());
+                    if (bitmap == null)
+                        return;
+
+                    int y = (int) rectF.bottom;
+                    int screenHeight = ScreenUtils.getScreenHeight(getContext());
+                    if (bitmap.getHeight() + y > screenHeight) {//图片高度画在目标view底部将会超出屏幕
+                        if (rectF.top > screenHeight - rectF.bottom)//目标view上方空间大于下方空间
+                            y = (int) (rectF.top - bitmap.getHeight());//此时把图片画在目标上方
+                    }
+                    canvas.drawBitmap(bitmap, rectF.left, y, mPaint);
                 }
             }
         }

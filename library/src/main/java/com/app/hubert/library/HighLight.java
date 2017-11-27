@@ -20,6 +20,7 @@ public class HighLight {
     private String desc;//高亮的引导描述
     private int descPadding;//描述文字距离高亮区域的padding
     private boolean textAlignWithHighlight = false;//desc文字是否两端对齐高亮区域，false:对齐画布，true:对齐高亮
+    private int imageRes;//同desc
 
     public HighLight(View hole, Type type) {
         this.mHole = hole;
@@ -93,6 +94,14 @@ public class HighLight {
 
     public void setTextAlignWithHighlight(boolean textAlignWithHighlight) {
         this.textAlignWithHighlight = textAlignWithHighlight;
+    }
+
+    public int getImageRes() {
+        return imageRes;
+    }
+
+    public void setImageRes(int imageRes) {
+        this.imageRes = imageRes;
     }
 
     public static enum Type {

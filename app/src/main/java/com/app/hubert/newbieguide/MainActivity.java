@@ -1,8 +1,9 @@
 package com.app.hubert.newbieguide;
 
 import android.graphics.Color;
-import android.graphics.DashPathEffect;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextPaint;
@@ -32,12 +33,12 @@ public class MainActivity extends AppCompatActivity {
 
         paint = new Paint();
         paint.setAntiAlias(true);
-        paint.setStyle(Paint.Style.STROKE);
+        // paint.setStyle(Paint.Style.STROKE);
         paint.setColor(Color.WHITE);
-        DashPathEffect effect = new DashPathEffect(new float[]{16, 12}, 0);
-        paint.setPathEffect(effect);
-        // PorterDuffXfermode xfermode = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
-        // paint.setXfermode(xfermode);
+        // DashPathEffect effect = new DashPathEffect(new float[]{16, 12}, 0);
+        // paint.setPathEffect(effect);
+        PorterDuffXfermode xfermode = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+        paint.setXfermode(xfermode);
 
         textPaint = new TextPaint();
         textPaint.setAntiAlias(true);
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 TestFragmentActivity.start(MainActivity.this);
             }
         });
+        final Button btn_bottom = (Button) findViewById(R.id.btn_bottom);
 
         paint.setStrokeWidth(3);
         //新增多页模式，即一个引导层显示多页引导内容
@@ -66,8 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 .alwaysShow(true)//是否每次都显示引导层，默认false，只显示一次
                 //-------------以上元素为引导层属性--------------*/
 
-                .addHighLight(genHighlight(textView))
-                .asPage()//保存参数为第一页
+                .addHighLight(genHighlight(textView)).asPage()//保存参数为第一页
                 //------------- 第一页引导页的属性 --------------*/
 
 
@@ -77,12 +78,17 @@ public class MainActivity extends AppCompatActivity {
                 //------------- 第二页引导页的属性 --------------*/
 
 
-                .addHighLight(textView).setLayoutRes(R.layout.view_guide_custom, R.id.iv)//引导页布局，点击跳转下一页或者消失引导层的空间id
-                .setEveryWhereCancelable(false)//是否点击任意地方跳转下一页或者消失引导层，默认true
-                .fullScreen(true)//是否全屏，即是否包含状态栏，默认false，设置为true需要Activity设置为全屏或者沉浸式状态栏
-                .setBackgroundColor(getResources().getColor(R.color.testColor))//设置背景色，建议使用有透明度的颜色
-                //                .asPage()//只有一页或者最后一页可以省略
+                // .addHighLight(textView).setLayoutRes(R.layout.view_guide_custom, R.id.iv)//引导页布局，点击跳转下一页或者消失引导层的空间id
+                // .setEveryWhereCancelable(false)//是否点击任意地方跳转下一页或者消失引导层，默认true
+                // .fullScreen(true)//是否全屏，即是否包含状态栏，默认false，设置为true需要Activity设置为全屏或者沉浸式状态栏
+                // .setBackgroundColor(getResources().getColor(R.color.testColor))//设置背景色，建议使用有透明度的颜色
+                // .asPage()
                 //------------- 第三页引导页的属性 --------------*/
+
+
+                .addHighLight(genHighlight(btn_bottom))//
+                .asPage()//只有一页或者最后一页可以省略
+                //------------- 第四页引导页的属性 --------------*/
 
                 .show();//显示引导层
     }
@@ -90,7 +96,8 @@ public class MainActivity extends AppCompatActivity {
     private HighLight genHighlight(View view) {
         HighLight hl = new HighLight(view, HighLight.Type.ROUND_RECTANGLE);
         hl.setRound(12);
-        hl.setDesc("这里是文字描述，用来紧跟高亮区域下方进行补充说明的作用，可以不设置");
+        // hl.setDesc("这里是文字描述，用来紧跟高亮区域下方进行补充说明的作用，可以不设置");
+        hl.setImageRes(R.drawable.huiyuan_cebianlan_mengban);
         hl.setDescPadding(30);
         hl.setPaint(paint);
         hl.setTextPaint(textPaint);
